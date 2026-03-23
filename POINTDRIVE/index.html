@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <!-- CONFIGURAÇÕES BÁSICAS -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PointDriver</title>
+
+  <!-- DESCRIÇÃO PARA SEO -->
+  <meta name="description" content="Rede de pontos de apoio para motoristas e entregadores. Encontre ajuda rápida na estrada.">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar">
+    <h1>PointDriver</h1>
+
+    <!-- MENU -->
+    <nav>
+      <a href="#">Início</a>
+      <a href="#">Planos</a>
+      <a href="#">Contato</a>
+    </nav>
+
+    <!-- LOGIN -->
+    <div class="nav-right">
+      <button onclick="openLogin()">Entrar</button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================= HERO / CAPA ================= -->
+    <section class="hero">
+      <h2>Seu ponto de apoio na estrada</h2>
+      <p>Encontre suporte rápido para motoristas e entregadores</p>
+
+      <div class="hero-buttons">
+        <button type="button">Encontrar agora</button>
+        <button type="button" class="secondary">Ser parceiro</button>
+      </div>
+    </section>
+
+    <!-- ================= LISTA DE PARCEIROS ================= -->
+    <section class="parceiros-section">
+      <h2>Pontos de apoio próximos</h2>
+
+      <!-- FILTROS -->
+      <div class="filters">
+        <button type="button" onclick="filterPartners('all')">Todos</button>
+        <button type="button" onclick="filterPartners('Borracharia')">Borracharia</button>
+        <button type="button" onclick="filterPartners('Apoio completo')">Apoio</button>
+        <button type="button" onclick="filterPartners('Emergência')">Emergência</button>
+      </div>
+
+      <!-- BUSCA -->
+      <input 
+        type="text"
+        id="campoBusca"
+        placeholder="Buscar por nome..."
+        onkeyup="searchPartners()"
+      />
+
+      <!-- CONTAINER ONDE JS INSERE OS CARDS -->
+      <div id="parceiros" class="parceiros"></div>
+    </section>
+
+  </main>
+
+  <!-- ================= MODAL DETALHES PARCEIRO ================= -->
+  <div id="janela" class="modal">
+    <div class="janela-conteudo">
+
+      <!-- FECHAR -->
+      <span class="close" onclick="closeModal()">&times;</span>
+
+      <!-- DADOS DINÂMICOS -->
+      <h2 id="janelaNome"></h2>
+      <p id="janelaTipo"></p>
+      <p id="janelaLocal"></p>
+
+      <!-- SERVIÇOS -->
+      <div id="janelaServicos"></div>
+
+      <!-- AVALIAÇÃO -->
+      <p id="janelaAvaliacao"></p>
+
+      <!-- BOTÃO WHATSAPP -->
+      <a id="botaoWhatsapp" target="_blank">
+        <button type="button">Chamar no WhatsApp</button>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ================= BOTÃO WHATSAPP FIXO ================= -->
+  <a 
+    href="https://wa.me/5585999999999"
+    class="whatsapp-float"
+    target="_blank"
+  >
+    💬
+  </a>
+
+  <!-- ================= RODAPÉ ================= -->
+  <footer>
+    <p>© 2026 PointDriver - Todos os direitos reservados</p>
+  </footer>
+
+  <!-- ================= MODAL LOGIN ================= -->
+  <div id="janelaLogin" class="modal">
+    <div class="janela-conteudo">
+
+      <!-- FECHAR LOGIN -->
+      <span class="close" onclick="closeLogin()">&times;</span>
+
+      <h2>Entrar</h2>
+
+      <!-- CAMPOS -->
+      <input type="text" id="loginNome" placeholder="Seu nome">
+      <input type="email" id="loginEmail" placeholder="Seu email">
+
+      <!-- BOTÃO -->
+      <button onclick="loginUser()">Entrar</button>
+
+    </div>
+  </div>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script src="/data/partners.js"></script>
+  <script src="js/script.js"></script>
+
+</body>
+</html>
